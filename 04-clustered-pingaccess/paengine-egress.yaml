@@ -1,0 +1,53 @@
+apiVersion: networking.k8s.io/v1
+
+kind: NetworkPolicy
+
+metadata:
+
+  name: paengine-egress # allows access between ping engine pods and ping admin svc
+
+  namespace: ping-dev
+
+spec:
+
+  podSelector:
+
+    matchLabels:
+
+      role: pingaccess
+
+      tier: engine
+
+  policyTypes:
+
+    - Egress
+
+  egress:
+
+    - to:
+
+      - podSelector:
+
+          matchLabels: #{}
+
+            role: pingaccess
+
+            tier: console
+
+      ports:
+
+      - protocol: TCP
+
+        port: 9000
+
+      - protocol: TCP
+
+        port: 8443
+
+      - protocol: TCP
+
+        port: 9090
+
+      - protocol: TCP
+
+        port: 8080

@@ -1,0 +1,53 @@
+apiVersion: networking.k8s.io/v1
+
+kind: NetworkPolicy
+
+metadata:
+
+  name: paadmin-ingress
+
+  namespace: ping-dev
+
+spec:
+
+  podSelector:
+
+    matchLabels:
+
+      role: pingaccess
+
+      tier: console
+
+  policyTypes:
+
+    - Ingress
+
+  ingress:
+
+    - from:
+
+      - podSelector:
+
+          matchLabels:
+
+            role: pingaccess
+
+            tier: engine
+
+      ports:
+
+      - protocol: TCP
+
+        port: 9000
+
+      - protocol: TCP
+
+        port: 8443
+
+      - protocol: TCP
+
+        port: 9090
+
+      - protocol: TCP
+
+        port: 8080
