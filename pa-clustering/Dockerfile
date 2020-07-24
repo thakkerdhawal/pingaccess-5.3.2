@@ -1,4 +1,5 @@
-FROM pingidentity/pingaccess:5.3.2-edge
+FROM harbor-pks-dev01.server.rbsgrp.net/iamp/pingaccess:5.3.2-edge
+#FROM pingidentity/pingaccess:5.3.2-edge
 #FROM pingidentity/pingaccess:2005
 COPY pingaccess/. /opt/in/.
 
