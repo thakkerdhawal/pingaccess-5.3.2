@@ -8,9 +8,11 @@ metadata:
 spec:
   ports:
   - name: console
-    port: 9000
+    port: 8443
+    targetPort: 8443 
   - name: cluster
-    port: 9090
+    port: 8080
+    targetPort: 8080 
   selector:
     role: pingaccess
     tier: console
@@ -45,12 +47,13 @@ spec:
             name: devops-secret
             optional: true
         name: pingaccess-admin
-        image: pingidentity/pingaccess:5.3.2-edge-rbs
+        image: harbor-pks-dev01.server.rbsgrp.net/iamp/pingaccess:5.3.2-edge-rbs
+        imagePullPolicy: Always
         #image: pingidentity/pingaccess:6.1.0-edge
         #image: pingidentity/pingaccess:edge
         ports:
-        - containerPort: 9000
-        - containerPort: 9090
+        - containerPort: 8443 
+        - containerPort: 8080 
         resources:
           limits:
             cpu: "1"
