@@ -13,8 +13,6 @@ generatorOptions:
 
 configMapGenerator:
 - name: pingaccess-engine-environment-variables
-  envs:
-    - env_vars.pingaccess-engine
+  env: env_vars.pingaccess-engine
 - name: pingaccess-admin-environment-variables
-  envs:
-    - env_vars.pingaccess-admin
+  env: env_vars.pingaccess-admin
